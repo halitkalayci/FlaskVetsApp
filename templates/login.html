@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}
+Giriş Yap
+{% endblock  %}
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+<div class="container w-100">
+<h3 class="text-center mt-3">Sitemize Giriş Yapın</h3>
+<p>Üye değil misin? <a href="/register">Kayıt ol!</a></p>
+<hr/>
+<form method="POST">
+    {{ render_field(form.email,class="form-control") }}
+    {{ render_field(form.password,class="form-control") }}
+    <button type="submit" class="btn btn-primary w-100 text-center m-auto">Giriş Yap</button>
+</form>
+</div>
+{% endblock body %}

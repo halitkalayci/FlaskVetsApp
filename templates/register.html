@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}
+Kayıt Ol
+{% endblock  %}
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+<div class="container w-100">
+<h3 class="text-center mt-3">Sitemize Kayıt Olun</h3>
+<p>Zaten üyeyim? <a href="/login">Giriş yap!</a></p>
+<hr/>
+<form method="POST">
+    {{ render_field(form.name,class="form-control") }}
+    {{ render_field(form.surname,class="form-control") }}
+    {{ render_field(form.email,class="form-control") }}
+    {{ render_field(form.password,class="form-control") }}
+    {{ render_field(form.confirmpassword,class="form-control") }}
+    <button type="submit" class="btn btn-success w-100">Kaydol</button>
+</form>
+</div>
+{% endblock body %}

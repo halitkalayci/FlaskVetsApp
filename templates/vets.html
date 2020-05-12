@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Veterinerler
+{% endblock  %}
+
+{% block body %}
+
+<div class="container">
+<h3 class="mt-5">VETERINERLER</h3>
+<table class="table table-striped mt-2 table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Veteriner Adı</th>
+      <th scope="col">Adresi</th>
+      <th scope="col">Telefonu</th>
+      <th scope="col">Haritada Göster</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    {% for vet in vets %}
+      <tr>
+     <th scope="row">{{vet.Id}}</th>
+      <td>{{vet.FullName}}</td>
+      <td>{{vet.Adress}}</td>
+      <td>{{vet.Phone}}</td>
+      <td>
+      <a type="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query={{vet.Latitude}},{{vet.Longitude}}({{vet.FullName}},{{vet.FullName}})" class="btn btn-success text-white">Haritada Görüntüle</a>
+      </td>
+    </tr>
+    {% endfor %}
+     
+  </tbody>
+</table>
+<script>
+function getLocationVet() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(ClosestVet);
+    ClosestVet();
+  } else {
+  }
+}
+function ClosestVet(position) {
+  window.location.href = "/closestvet?lat="+ position.coords.latitude + "&lon="+ position.coords.longitude;
+}
+</script>
+{% endblock  %}

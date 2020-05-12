@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><img src="/../static/img/doglogo.png" alt="veterinerimLogo" class="img-fluid" style="max-width:40px;" /> Veterinerim </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/index">Ana Sayfa</a>
+      </li>
+      {% if session["LoggedIn"] %}
+           <li class="nav-item">
+        <a class="nav-link" href="/vets">Veterinerler</a>
+      </li>
+      {% else %}
+      {% endif %}
+      {% if session["IsAdmin"] %}
+      <li class="nav-item">
+        <a class="nav-link text-danger" href="/yonetim">Yönetim Paneli</a>
+      </li>
+      {% else %}
+      {% endif %}
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+       <ul class="navbar-nav mr-auto">
+       {% if session["LoggedIn"] %}
+         <li class="nav-item">
+        <a class="nav-link" href="#"> <span class="text-success"> {{session["Name"]}} {{session["Surname"]}} </span> olarak giriş yapıldı.</a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="/logout">Çıkış Yap</a>
+      </li>
+       {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Kayıt Ol</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Giriş Yap</a>
+      </li>
+       {% endif %}
+      
+    </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Ana Sayfa
+{% endblock  %}
+
+{% block body %}
+<div class="text-center mt-5">
+
+
+{% if session["LoggedIn"] %}
+<button type="button" onclick="getLocation()" class="btn btn-danger btn-circle btn-xl">ACİL YARDIM!</button>
+<p id="demo"></p>
+<h2 class="mt-5">LÜTFEN DİKKAT!</h2>
+<p>Bilgisayardan alınan konumların telefondan alınan konumlara göre sapma payı çok daha yüksektir. Daha iyi bir tecrübe için telefon kullanmanızı öneriyoruz.</p>
+<p>İhtiyaç olmadığı halde butonumuzu kullanmak, sistemimizden kalıcı olarak uzaklaştırılmanıza sebep olacaktır.</p>
+{% else %}
+<p>İçeriğe ulaşmak için giriş yapmalısınız.</p>
+<a href="/login">Giriş Yap</a>
+{% endif %}
+
+
+
+</div>
+
+<script src="../static/js/custom.js"><script/>
+{% endblock  %}
